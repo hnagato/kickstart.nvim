@@ -110,12 +110,23 @@ vim.opt.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- Modified clipboard settings for selective synchronization
+-- Instead of automatic sync, set up custom keymaps for explicit clipboard operations
+-- This prevents ciw and similar operations from automatically copying to clipboard
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  -- Disable automatic clipboard sync
+  vim.opt.clipboard = ''
+
+  -- Set up explicit clipboard keymaps
+  -- Visual mode: y copies to both internal register and system clipboard
+  vim.keymap.set('v', 'y', '"+y', { desc = 'Yank to system clipboard' })
+
+  -- Normal mode: paste from system clipboard
+  vim.keymap.set('n', '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
+  vim.keymap.set('n', '<leader>P', '"+P', { desc = 'Paste from system clipboard before cursor' })
+
+  -- Visual mode: paste from system clipboard
+  vim.keymap.set('v', '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
 end)
 
 -- Enable break indent
