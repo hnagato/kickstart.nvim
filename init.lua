@@ -848,23 +848,23 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    config = function()
-      require('catppuccin').setup {
-        flavour = 'mocha',
-        transparent_background = true,
-      }
-      vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
-
+  -- { -- You can easily change to a different colorscheme.
+  --   -- Change the name of the colorscheme plugin below, and then
+  --   -- change the command in the config to whatever the name of that colorscheme is.
+  --   --
+  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   'catppuccin/nvim',
+  --   name = 'catppuccin',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   config = function()
+  --     require('catppuccin').setup {
+  --       flavour = 'mocha',
+  --       transparent_background = true,
+  --     }
+  --     vim.cmd.colorscheme 'catppuccin'
+  --   end,
+  -- },
+  --
   -- {
   --   'shaunsingh/nord.nvim',
   --   lazy = false,
@@ -910,38 +910,38 @@ require('lazy').setup({
   --   end,
   -- },
 
-  -- {
-  --   'rebelot/kanagawa.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('kanagawa').setup {
-  --       compile = false,
-  --       undercurl = true,
-  --       commentStyle = { italic = true },
-  --       functionStyle = {},
-  --       keywordStyle = { italic = true },
-  --       statementStyle = { bold = true },
-  --       typeStyle = {},
-  --       transparent = true,
-  --       dimInactive = false,
-  --       terminalColors = true,
-  --       colors = {
-  --         palette = {},
-  --         theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-  --       },
-  --       overrides = function(colors)
-  --         return {}
-  --       end,
-  --       theme = 'wave',
-  --       background = {
-  --         dark = 'wave', -- or dragon
-  --         light = 'lotus',
-  --       },
-  --     }
-  --     vim.cmd [[colorscheme kanagawa]]
-  --   end,
-  -- },
+  {
+    'rebelot/kanagawa.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('kanagawa').setup {
+        compile = false,
+        undercurl = true,
+        commentStyle = { italic = true },
+        functionStyle = {},
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = true,
+        dimInactive = false,
+        terminalColors = true,
+        colors = {
+          palette = {},
+          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+        },
+        overrides = function(colors)
+          return {}
+        end,
+        theme = 'dragon',
+        background = {
+          dark = 'dragon', -- or wave
+          light = 'lotus',
+        },
+      }
+      vim.cmd [[colorscheme kanagawa]]
+    end,
+  },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
